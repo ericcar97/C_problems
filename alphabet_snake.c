@@ -30,7 +30,7 @@ int main(void){
     while(flag == 0){
         dir = rand() % 4;
         count = 0;
-        while(count < 3 && flag == 0){
+        while(count < 4 && flag == 0){
             if(dir == 0){
                 if(0 < l && grid[l-1][m] == ' '){
                     l--;
@@ -89,6 +89,7 @@ int main(void){
         }
     }
 
+    //Printing the result
     for(i = 0; i < SIZE; i++){
         for(j = 0; j < SIZE; j++){
             printf("[%c]",grid[i][j]);
