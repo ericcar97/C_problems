@@ -2,99 +2,102 @@
 #include <stdlib.h>
 #include <time.h>
 #define SIZE 10
+#define EMPTY ' '
 
-int main(void){
+enum Direction{UP, RIGHT, DOWN, LEFT};
 
-    /* filling the matrix with empty cells */
-    char grid[SIZE][SIZE], c;
-    int i, j, l, m;
-    int dir, count, flag = 0;
+void emptyGrid(char grid[SIZE][SIZE]){
+    int i, j; 
     for(i = 0; i < SIZE; i++){
         for(j = 0; j < SIZE; j++){
-            grid[i][j] = ' ';
+            grid[i][j] = EMPTY;
         }
     }
-
-    /* generating random inital position */
-    c = 'A';
-    srand(time(NULL));  
-    l = rand() % 10;
-    m = rand() % 10;
-    grid[l][m] = c;
-
-    /*  North : 0
-        East : 1
-        South : 2
-        West : 3   */
+}
+void alphabetSnake(char grid[SIZE][SIZE]){
+    int flag = 0,count, direction;
+    char letter = 'A';
+    srand(time(NULL));
+    int row = rand() % 10;
+    int column = rand() % 10;
+    grid[row][column] = letter;
 
     while(flag == 0){
-        dir = rand() % 4;
+        direction = rand() % 4;
         count = 0;
         while(count < 4 && flag == 0){
-            if(dir == 0){
-                if(0 < l && grid[l-1][m] == ' '){
-                    l--;
+            if(direction == UP){
+                if(0 < row && grid[row - 1][column] == EMPTY){
+                    row--;
                     flag = 1; //empty space found
                     break;
                 }
                 else{
                     count++;
-                    dir = (dir + 1) % 4;
+                    direction = (direction + 1) % 4;
                 }
             }
-            if(dir == 1){
-                if(m < 9 && grid[l][m+1] == ' '){
-                    m++;
+            if(direction == RIGHT){
+                if(column < 9 && grid[row][column + 1] == EMPTY){
+                    column++;
                     flag = 1;
                     break;
                 }
                 else{
                     count++;
-                    dir = (dir + 1) % 4;
+                    direction = (direction + 1) % 4;
                 }
             }
-            if(dir == 2){
-                if(l < 9 && grid[l+1][m] == ' '){
-                    l++;
+            if(direction == DOWN){
+                if(row < 9 && grid[row + 1][column] == ' '){
+                    row++;
                     flag = 1;
                     break;
                 }
                 else{
                     count ++;
-                    dir = (dir + 1) % 4;
+                    direction = (direction + 1) % 4;
                 }
             }
-            if(dir == 3){
-                if(0 < m && grid[l][m-1] == ' '){
-                    m--;
+            if(direction == LEFT){
+                if(0 < column && grid[row][column - 1] == ' '){
+                    column--;
                     flag = 1;
                     break;
                 }
                 else{
                     count++;
-                    dir = (dir + 1) % 4;
+                    direction = (direction + 1) % 4;
                 }
             }
         }
         if(flag == 1){ //empty space filled
-            c++;
-            grid[l][m] = c;
+            letter++;
+            grid[row][column] = letter;
             flag = 0; //The loop must continue
         }
         else{
             flag = 1;
         }
-        if(c == 'Z'){
+        if(letter == 'Z'){
             break;
         }
     }
-
-    //Printing the result
-    for(i = 0; i < SIZE; i++){
-        for(j = 0; j < SIZE; j++){
-            printf("[%c]",grid[i][j]);
-        }
+}
+void printGrid(char grid[SIZE][SIZE]){
+    int row, column;
+    for(row = 0; row < SIZE; row++){
+        for(column = 0; column < SIZE; column++){
+            printf("[%c]",grid[row][column]);
+        } 
         printf("\n");
     }
+}
+
+int main(void){
+    char grid[SIZE][SIZE];
+    emptyGrid(grid);
+    alphabetSnake(grid);
+    printGrid(grid);
     return 0;
 }
