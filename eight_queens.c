@@ -88,7 +88,11 @@ int countQueens(char board[SIZE][SIZE],int* count_queens){
     } 
 }
 
-//Heap's algorithm to find all solutions, I found it on wikipedia, and changed it a bit.  
+/*
+Heap's algorithm to find all solutions, I found it on wikipedia, and changed it a bit.
+index[] is the array of index {0,1,...,SIZE-1}, I position SIZE queens, one for each row, in the index column, 
+wich is a permutation of the array, this is done SIZE! times till I find all permutations. 
+*/
 void getSolutions(int len, int index[SIZE], int* count_solutions){
     int i, row, column, temp, count_queens = 0;
     char board[SIZE][SIZE];
