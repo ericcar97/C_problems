@@ -1,0 +1,48 @@
+===========================================================================
+Module  : Eight Queens
+Keywords: strings, arrays, recursion
+===========================================================================
+
+In chess, the queen is the most powerful piece.  She can attack in
+any of the eight directions and travel as many spaces as she wants.
+Here's an example chess board that shows a queen and all the spaces
+she could move to:
+
+   [ ] [ ] [|] [ ] [ ] [ ] [/] [ ] 
+   [ ] [ ] [|] [ ] [ ] [/] [ ] [ ] 
+   [\] [ ] [|] [ ] [/] [ ] [ ] [ ] 
+   [ ] [\] [|] [/] [ ] [ ] [ ] [ ] 
+   [-] [-] [Q] [-] [-] [-] [-] [-] 
+   [ ] [/] [|] [\] [ ] [ ] [ ] [ ] 
+   [/] [ ] [|] [ ] [\] [ ] [ ] [ ] 
+   [ ] [ ] [|] [ ] [ ] [\] [ ] [ ] 
+
+The assignment then, is to find a way to place 8 queens on a chessboard
+in such a way that no queen can capture any other queen.  Here is
+one such arrangement:
+
+   [Q][ ][ ][ ][ ][ ][ ][ ]
+   [ ][ ][ ][ ][ ][ ][Q][ ]
+   [ ][ ][ ][ ][Q][ ][ ][ ]
+   [ ][ ][ ][ ][ ][ ][ ][Q]
+   [ ][Q][ ][ ][ ][ ][ ][ ]
+   [ ][ ][ ][Q][ ][ ][ ][ ]
+   [ ][ ][ ][ ][ ][Q][ ][ ]
+   [ ][ ][Q][ ][ ][ ][ ][ ]
+
+Your program should output all solutions to this problem, there
+are a total of 92 of them so ensure your program finds them all.
+
+If you author your program carefully, you should be able to easily
+have it also solve other 'n' queens problems.  Here are the numbers
+of solutions for all values of 'n' up to 10:
+
+   Value Of 'N'   Number Of Solutions
+   ------------   -------------------
+    4                2
+    5               10
+    6                4
+    7               40
+    8               92
+    9              352
+   10              724
