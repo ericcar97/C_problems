@@ -30,6 +30,15 @@ void printBoard(char board[SIZE][SIZE]){
 }
 */
 
+
+
+/*
+
+Here I divided the board in four to write a '*' in the attacked diagonals, those places in wich row <= column,
+row > column, and those in wich row + column < SIZE and row + column => SIZE, those divisions correspond to the
+places that remains after divide the board with the two principal diagnoals
+
+*/ 
 void positionQueen(char board[SIZE][SIZE], int row, int column){
     int i, j, init; 
     
@@ -79,6 +88,7 @@ int countQueens(char board[SIZE][SIZE],int* count_queens){
     } 
 }
 
+//Heap's algorithm to find all solutions, I found it on wikipedia, and changed it a bit.  
 void getSolutions(int len, int index[SIZE], int* count_solutions){
     int i, row, column, temp, count_queens = 0;
     char board[SIZE][SIZE];
