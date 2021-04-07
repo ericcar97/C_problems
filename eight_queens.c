@@ -36,7 +36,7 @@ void printBoard(char board[SIZE][SIZE]){
 
 Here I divided the board in four to write a '*' in the attacked diagonals, those places in wich row <= column,
 row > column, and those in wich row + column < SIZE and row + column => SIZE, those divisions correspond to the
-places that remains after divide the board with the two principal diagnoals
+places that remains after divide the board by the two principal diagnoals
 
 */ 
 void positionQueen(char board[SIZE][SIZE], int row, int column){
